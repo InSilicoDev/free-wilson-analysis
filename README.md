@@ -15,9 +15,7 @@
 
 **Free-Wilson analysis** is a classic [quantitative structure–activity relationship (QSAR)](https://en.wikipedia.org/wiki/Quantitative_structure%E2%80%93activity_relationship) method introduced by Spencer Free and James Wilson in 1964. Its central assumption is elegantly simple: the biological activity of a molecule can be approximated as an **additive sum of contributions** from the individual substituents (R-groups) decorating a shared molecular scaffold.
 
-This repository packages that idea into one reproducible notebook. Point it at a CSV of related compounds and their measured activities, and it will find the common core, break each molecule into its R-groups, fit an interpretable linear model, and use the learned per-substituent contributions to **enumerate and rank novel compounds** you haven't made yet.
-
-> **Why it's useful** — Unlike black-box QSAR models, every coefficient here has a direct chemical meaning: *"swapping a methyl for a chlorine at R₂ is worth +0.4 log units of potency."* That makes it an excellent tool for guiding medicinal-chemistry decisions in a lead-optimization campaign.
+This repository packages that idea into one reproducible notebook. Point it at a CSV of related compounds and their measured activities, and it will find the common core, break each molecule into its R-groups, fit an interpretable linear model, and use the learned per-substituent contributions to **enumerate and rank novel compounds** haven't made.
 
 ---
 
@@ -53,7 +51,7 @@ The notebook runs end-to-end as an eight-stage pipeline:
 
 ### 1. Prerequisites
 
-You'll need Python 3.9+ and the scientific / cheminformatics stack below. RDKit installs most reliably via conda:
+You'll need Python 3.9+ and the cheminformatics stack below. RDKit installs most reliably via conda:
 
 ```bash
 # Recommended: conda for RDKit
@@ -118,18 +116,6 @@ Running the notebook produces:
 - 🧪 **Interactive R-group coefficient grid** — every substituent colored by its contribution to activity.
 - 🗂️ **`predicted_compounds.csv`** — novel designs ranked by predicted activity, each with its SMILES, predicted value, novelty flag, and per-position R-group assignment.
 - 🔬 **Top-compound molecule grid** — an interactive, sortable view of the most promising predicted structures.
-
----
-
-## Project structure
-
-```
-free-wilson-analysis/
-├── free_wilson_analysis.ipynb   # the complete, documented pipeline
-├── assets/                      # README banner & diagram
-├── LICENSE                      # MIT
-└── README.md
-```
 
 ---
 
